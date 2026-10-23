@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya Name Sync",
+        "description": "將 Tuya（雲端）整合中的裝置名稱同步到對應的 Tuya Local 裝置，依 Tuya 裝置 ID 配對。",
+        "data": {
+          "prefix": "Tuya Local 名稱前綴"
+        },
+        "data_description": {
+          "prefix": "加在雲端名稱前面，例如 \"TL_\" 會把「檯燈」改成「TL_檯燈」。留空則與雲端名稱完全相同。"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Tuya Name Sync 已經設定過了。",
+      "single_instance_allowed": "Tuya Name Sync 已經設定過了。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tuya Name Sync 選項",
+        "data": {
+          "prefix": "Tuya Local 名稱前綴",
+          "auto_sync": "Tuya 裝置改名時自動同步",
+          "sync_entry_title": "同時修改 Tuya Local 整合項目的名稱"
+        },
+        "data_description": {
+          "prefix": "加在雲端名稱前面，例如 \"TL_\" 會把「檯燈」改成「TL_檯燈」。留空則與雲端名稱完全相同。"
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "立即同步名稱",
+      "description": "將 Tuya 雲端裝置名稱複製到對應的 Tuya Local 裝置。",
+      "fields": {
+        "dry_run": {
+          "name": "僅預覽",
+          "description": "只列出將要修改的內容，不實際改名。"
+        }
+      }
+    }
+  }
+}

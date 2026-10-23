@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya Name Sync",
+        "description": "Tuya（クラウド）統合のデバイス名を、対応する Tuya Local デバイスにコピーします。デバイスは Tuya デバイス ID で照合されます。",
+        "data": {
+          "prefix": "Tuya Local の名前の接頭辞"
+        },
+        "data_description": {
+          "prefix": "クラウド名の前に付けます。例: \"TL_\" なら「デスクライト」が「TL_デスクライト」になります。空欄にするとクラウド名をそのまま使います。"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Tuya Name Sync はすでに設定されています。",
+      "single_instance_allowed": "Tuya Name Sync はすでに設定されています。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tuya Name Sync のオプション",
+        "data": {
+          "prefix": "Tuya Local の名前の接頭辞",
+          "auto_sync": "Tuya デバイスの名前が変更されたら自動で同期する",
+          "sync_entry_title": "Tuya Local の統合エントリ名も変更する"
+        },
+        "data_description": {
+          "prefix": "クラウド名の前に付けます。例: \"TL_\" なら「デスクライト」が「TL_デスクライト」になります。空欄にするとクラウド名をそのまま使います。"
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "今すぐ名前を同期",
+      "description": "Tuya クラウドのデバイス名を対応する Tuya Local デバイスにコピーします。",
+      "fields": {
+        "dry_run": {
+          "name": "ドライラン",
+          "description": "変更内容を表示するだけで、実際には名前を変更しません。"
+        }
+      }
+    }
+  }
+}

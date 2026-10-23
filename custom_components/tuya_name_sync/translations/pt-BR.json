@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya Name Sync",
+        "description": "Copia os nomes dos dispositivos da integração Tuya (nuvem) para os dispositivos Tuya Local correspondentes. Os dispositivos são associados pelo ID Tuya.",
+        "data": {
+          "prefix": "Prefixo de nome para Tuya Local"
+        },
+        "data_description": {
+          "prefix": "Adicionado antes do nome da nuvem, por ex. \"TL_\" transforma \"Luminária de mesa\" em \"TL_Luminária de mesa\". Deixe vazio para usar o nome da nuvem sem alterações."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "O Tuya Name Sync já está configurado.",
+      "single_instance_allowed": "O Tuya Name Sync já está configurado."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opções do Tuya Name Sync",
+        "data": {
+          "prefix": "Prefixo de nome para Tuya Local",
+          "auto_sync": "Sincronizar automaticamente quando um dispositivo Tuya for renomeado",
+          "sync_entry_title": "Renomear também as entradas da integração Tuya Local"
+        },
+        "data_description": {
+          "prefix": "Adicionado antes do nome da nuvem, por ex. \"TL_\" transforma \"Luminária de mesa\" em \"TL_Luminária de mesa\". Deixe vazio para usar o nome da nuvem sem alterações."
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "Sincronizar nomes agora",
+      "description": "Copia os nomes dos dispositivos Tuya da nuvem para os dispositivos Tuya Local correspondentes.",
+      "fields": {
+        "dry_run": {
+          "name": "Simulação",
+          "description": "Apenas mostra o que mudaria, sem renomear nada."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya Name Sync",
+        "description": "Kopiert Gerätenamen aus der Tuya-Integration (Cloud) auf die passenden Tuya-Local-Geräte. Die Zuordnung erfolgt über die Tuya-Geräte-ID.",
+        "data": {
+          "prefix": "Namenspräfix für Tuya Local"
+        },
+        "data_description": {
+          "prefix": "Wird vor den Cloud-Namen gesetzt, z. B. macht \"TL_\" aus \"Schreibtischlampe\" \"TL_Schreibtischlampe\". Leer lassen, um den Cloud-Namen unverändert zu übernehmen."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Tuya Name Sync ist bereits eingerichtet.",
+      "single_instance_allowed": "Tuya Name Sync ist bereits eingerichtet."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tuya Name Sync – Optionen",
+        "data": {
+          "prefix": "Namenspräfix für Tuya Local",
+          "auto_sync": "Automatisch synchronisieren, wenn ein Tuya-Gerät umbenannt wird",
+          "sync_entry_title": "Auch die Einträge der Tuya-Local-Integration umbenennen"
+        },
+        "data_description": {
+          "prefix": "Wird vor den Cloud-Namen gesetzt, z. B. macht \"TL_\" aus \"Schreibtischlampe\" \"TL_Schreibtischlampe\". Leer lassen, um den Cloud-Namen unverändert zu übernehmen."
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "Namen jetzt synchronisieren",
+      "description": "Kopiert die Namen der Tuya-Cloud-Geräte auf die passenden Tuya-Local-Geräte.",
+      "fields": {
+        "dry_run": {
+          "name": "Probelauf",
+          "description": "Nur anzeigen, was sich ändern würde, ohne etwas umzubenennen."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya Name Sync",
+        "description": "Tuya(클라우드) 통합의 기기 이름을 일치하는 Tuya Local 기기로 복사합니다. 기기는 Tuya 기기 ID로 매칭됩니다.",
+        "data": {
+          "prefix": "Tuya Local 이름 접두사"
+        },
+        "data_description": {
+          "prefix": "클라우드 이름 앞에 붙습니다. 예: \"TL_\"이면 \"책상 조명\"이 \"TL_책상 조명\"이 됩니다. 비워 두면 클라우드 이름을 그대로 사용합니다."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Tuya Name Sync가 이미 설정되어 있습니다.",
+      "single_instance_allowed": "Tuya Name Sync가 이미 설정되어 있습니다."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tuya Name Sync 옵션",
+        "data": {
+          "prefix": "Tuya Local 이름 접두사",
+          "auto_sync": "Tuya 기기 이름이 바뀌면 자동으로 동기화",
+          "sync_entry_title": "Tuya Local 통합 항목 이름도 변경"
+        },
+        "data_description": {
+          "prefix": "클라우드 이름 앞에 붙습니다. 예: \"TL_\"이면 \"책상 조명\"이 \"TL_책상 조명\"이 됩니다. 비워 두면 클라우드 이름을 그대로 사용합니다."
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "지금 이름 동기화",
+      "description": "Tuya 클라우드 기기 이름을 일치하는 Tuya Local 기기로 복사합니다.",
+      "fields": {
+        "dry_run": {
+          "name": "미리 보기",
+          "description": "실제로 이름을 바꾸지 않고 변경될 내용만 표시합니다."
+        }
+      }
+    }
+  }
+}

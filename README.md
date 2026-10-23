@@ -64,6 +64,10 @@ data:
 | Sync automatically | on | Re-sync whenever a Tuya or Tuya Local device changes |
 | Also rename the Tuya Local integration entries | on | Update the entry titles shown on the Tuya Local integration page |
 
+## Languages
+
+The setup and options screens are translated into English, 简体中文, 繁體中文, 日本語, 한국어, Deutsch, Français, Español, Italiano, Português (Brasil), Русский, Nederlands and Polski. Home Assistant picks the language from your user profile; anything else falls back to English. Corrections and new languages are welcome as pull requests to `custom_components/tuya_name_sync/translations/`.
+
 ## Requirements
 
 - Home Assistant 2025.1 or newer
@@ -92,6 +96,8 @@ data:
 
 **提示：** 在涂鸦 App 里改名后，需要重新加载 Tuya 集成（或重启 HA）让它拉取新名称，随后会自动同步。
 也可以手动调用动作 `tuya_name_sync.sync`（加 `dry_run: true` 只预览不修改）。
+
+**界面语言：** 支持简体中文、繁體中文、英语、日语、韩语、德语、法语、西班牙语、意大利语、葡萄牙语（巴西）、俄语、荷兰语、波兰语，按 HA 个人资料里的语言自动切换，其他语言显示英文。
 
 ## License
 

@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya Name Sync",
+        "description": "Kopiuje nazwy urządzeń z integracji Tuya (chmura) do odpowiadających im urządzeń Tuya Local. Urządzenia są dopasowywane po identyfikatorze Tuya.",
+        "data": {
+          "prefix": "Prefiks nazwy dla Tuya Local"
+        },
+        "data_description": {
+          "prefix": "Dodawany przed nazwą z chmury, np. \"TL_\" zmienia „Lampka biurkowa” w „TL_Lampka biurkowa”. Pozostaw puste, aby użyć nazwy z chmury bez zmian."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Tuya Name Sync jest już skonfigurowany.",
+      "single_instance_allowed": "Tuya Name Sync jest już skonfigurowany."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcje Tuya Name Sync",
+        "data": {
+          "prefix": "Prefiks nazwy dla Tuya Local",
+          "auto_sync": "Synchronizuj automatycznie po zmianie nazwy urządzenia Tuya",
+          "sync_entry_title": "Zmieniaj też nazwy wpisów integracji Tuya Local"
+        },
+        "data_description": {
+          "prefix": "Dodawany przed nazwą z chmury, np. \"TL_\" zmienia „Lampka biurkowa” w „TL_Lampka biurkowa”. Pozostaw puste, aby użyć nazwy z chmury bez zmian."
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "Synchronizuj nazwy teraz",
+      "description": "Kopiuje nazwy urządzeń Tuya z chmury do odpowiadających im urządzeń Tuya Local.",
+      "fields": {
+        "dry_run": {
+          "name": "Próba",
+          "description": "Tylko pokaż, co by się zmieniło, bez zmiany nazw."
+        }
+      }
+    }
+  }
+}

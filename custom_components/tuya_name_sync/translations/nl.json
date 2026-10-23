@@ -1,0 +1,47 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya Name Sync",
+        "description": "Kopieert apparaatnamen van de Tuya-integratie (cloud) naar de bijbehorende Tuya Local-apparaten. Apparaten worden gekoppeld op Tuya-apparaat-ID.",
+        "data": {
+          "prefix": "Naamvoorvoegsel voor Tuya Local"
+        },
+        "data_description": {
+          "prefix": "Wordt voor de cloudnaam gezet, bijv. \"TL_\" maakt van \"Bureaulamp\" \"TL_Bureaulamp\". Laat leeg om de cloudnaam ongewijzigd over te nemen."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "Tuya Name Sync is al ingesteld.",
+      "single_instance_allowed": "Tuya Name Sync is al ingesteld."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opties voor Tuya Name Sync",
+        "data": {
+          "prefix": "Naamvoorvoegsel voor Tuya Local",
+          "auto_sync": "Automatisch synchroniseren wanneer een Tuya-apparaat wordt hernoemd",
+          "sync_entry_title": "Ook de items van de Tuya Local-integratie hernoemen"
+        },
+        "data_description": {
+          "prefix": "Wordt voor de cloudnaam gezet, bijv. \"TL_\" maakt van \"Bureaulamp\" \"TL_Bureaulamp\". Laat leeg om de cloudnaam ongewijzigd over te nemen."
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "Namen nu synchroniseren",
+      "description": "Kopieert de namen van Tuya-cloudapparaten naar de bijbehorende Tuya Local-apparaten.",
+      "fields": {
+        "dry_run": {
+          "name": "Proefrun",
+          "description": "Alleen tonen wat er zou veranderen, zonder iets te hernoemen."
+        }
+      }
+    }
+  }
+}
