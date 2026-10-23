@@ -67,6 +67,16 @@ class Change:
         }
 
 
+def _all_devices(registry: dr.DeviceRegistry) -> list[dr.DeviceEntry]:
+    # Newer HA yields DeviceEntry objects when iterating registry.devices and
+    # deprecates .values(); older HA is a plain mapping of id -> DeviceEntry.
+    devices = registry.devices
+    first = next(iter(devices), None)
+    if first is None or isinstance(first, dr.DeviceEntry):
+        return list(devices)
+    return list(devices.values())
+
+
 def _tuya_id(device: dr.DeviceEntry, domain: str) -> str | None:
     for ident_domain, ident in device.identifiers:
         if ident_domain == domain:
@@ -80,9 +90,10 @@ def async_sync_names(
 ) -> list[Change]:
     """Copy cloud Tuya names onto matching Tuya Local devices."""
     registry = dr.async_get(hass)
+    devices = _all_devices(registry)
 
     cloud_names: dict[str, str] = {}
-    for device in registry.devices.values():
+    for device in devices:
         if (tuya_id := _tuya_id(device, SOURCE_DOMAIN)) is None:
             continue
         if name := device.name_by_user or device.name:
@@ -90,7 +101,7 @@ def async_sync_names(
 
     changes: list[Change] = []
 
-    for device in list(registry.devices.values()):
+    for device in devices:
         tuya_id = _tuya_id(device, TARGET_DOMAIN)
         if tuya_id is None or (new := cloud_names.get(tuya_id)) is None:
             continue
@@ -162,7 +173,12 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         async_sync_names(hass, sync_entry_title=sync_entry_title)
 
     # Sync once Home Assistant (and with it Tuya / Tuya Local) has started.
-    entry.async_on_unload(async_at_started(hass, lambda _: run_sync()))
+    # Must be a @callback so it runs on the event loop, not in an executor.
+    @callback
+    def on_started(_: HomeAssistant) -> None:
+        run_sync()
+
+    entry.async_on_unload(async_at_started(hass, on_started))
 
     if auto_sync:
         debouncer = Debouncer(
