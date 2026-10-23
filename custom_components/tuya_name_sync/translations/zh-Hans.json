@@ -1,0 +1,37 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya 名称同步",
+        "description": "把 Tuya（联网版）集成里的设备名称同步到对应的 Tuya Local 设备，按 Tuya 设备 ID 匹配。"
+      }
+    },
+    "abort": {
+      "already_configured": "Tuya 名称同步已经配置过了。",
+      "single_instance_allowed": "Tuya 名称同步已经配置过了。"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tuya 名称同步选项",
+        "data": {
+          "auto_sync": "Tuya 设备改名时自动同步",
+          "sync_entry_title": "同时修改 Tuya Local 集成条目的名称"
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "立即同步名称",
+      "description": "把 Tuya 联网版的设备名称复制到对应的 Tuya Local 设备。",
+      "fields": {
+        "dry_run": {
+          "name": "仅预览",
+          "description": "只列出将要修改的内容，不实际改名。"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "domain": "tuya_name_sync",
+  "name": "Tuya Name Sync",
+  "after_dependencies": ["tuya", "tuya_local"],
+  "codeowners": ["@OvidioLee"],
+  "config_flow": true,
+  "documentation": "https://github.com/OvidioLee/ha-tuya-name-sync",
+  "integration_type": "service",
+  "iot_class": "calculated",
+  "issue_tracker": "https://github.com/OvidioLee/ha-tuya-name-sync/issues",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "1.0.0"
+}

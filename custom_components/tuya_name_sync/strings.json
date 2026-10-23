@@ -1,0 +1,37 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Tuya Name Sync",
+        "description": "Copy device names from the Tuya (cloud) integration to matching Tuya Local devices. Devices are matched by Tuya device ID."
+      }
+    },
+    "abort": {
+      "already_configured": "Tuya Name Sync is already set up.",
+      "single_instance_allowed": "Tuya Name Sync is already set up."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tuya Name Sync options",
+        "data": {
+          "auto_sync": "Sync automatically when a Tuya device is renamed",
+          "sync_entry_title": "Also rename the Tuya Local integration entries"
+        }
+      }
+    }
+  },
+  "services": {
+    "sync": {
+      "name": "Sync names now",
+      "description": "Copy Tuya cloud device names to matching Tuya Local devices.",
+      "fields": {
+        "dry_run": {
+          "name": "Dry run",
+          "description": "Only report what would change, without renaming anything."
+        }
+      }
+    }
+  }
+}
