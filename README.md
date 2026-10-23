@@ -16,6 +16,10 @@ integration keeps them in step.
 - Matches devices by Tuya device ID: `("tuya", <id>)` ↔ `("tuya_local", <id>)`.
 - Uses the cloud device's name — your Home Assistant rename if you set one,
   otherwise the name from the Tuya app.
+- Puts a configurable **prefix** in front (default `TL_`), so the local copy is
+  easy to tell apart: `Desk lamp` → `TL_Desk lamp`. Leave the prefix empty to
+  use the cloud name unchanged. A cloud name that already starts with the prefix
+  is not prefixed twice.
 - Sets it as the Tuya Local **device name** and (optionally) the Tuya Local
   **integration entry title**, which is what the Tuya Local integration page lists.
 - **Entity IDs are not changed**, so automations, scripts and dashboards keep working.
@@ -56,6 +60,7 @@ data:
 
 | Option | Default | Meaning |
 | --- | --- | --- |
+| Name prefix for Tuya Local | `TL_` | Added in front of the cloud name; empty means no prefix |
 | Sync automatically | on | Re-sync whenever a Tuya or Tuya Local device changes |
 | Also rename the Tuya Local integration entries | on | Update the entry titles shown on the Tuya Local integration page |
 
@@ -76,6 +81,7 @@ data:
 
 - 按涂鸦设备 ID 匹配两边的设备。
 - 以联网版设备名称为准（如果在 HA 里改过名就用 HA 里的名称）。
+- 名称前会加一个**前缀**（默认 `TL_`），方便区分本地版：「台灯」→「TL_台灯」。前缀可在集成选项里修改，留空则和联网版名称完全一样；联网版名称本身已带这个前缀时不会重复添加。
 - 同时修改 Tuya Local 的**设备名称**和**集成条目名称**（即 Tuya Local 集成页面上显示的名字，可在选项里关闭）。
 - **不改实体 ID**，自动化、脚本、仪表盘不受影响。
 - 启动时同步一次，之后联网版设备改名会自动同步。

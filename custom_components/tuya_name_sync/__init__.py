@@ -3,8 +3,9 @@
 Devices are matched by Tuya device ID: the cloud integration registers
 devices with identifier ("tuya", <id>) and Tuya Local with
 ("tuya_local", <id>). The cloud name (or the name you set in Home Assistant
-for the cloud device) is written to the Tuya Local device as its user name,
-and optionally to the Tuya Local config entry title. Entity IDs are not
+for the cloud device), with an optional prefix such as "TL_" in front, is
+written to the Tuya Local device as its user name, and optionally to the
+Tuya Local config entry title. Entity IDs are not
 changed, so automations keep working.
 """
 
@@ -33,8 +34,10 @@ from homeassistant.helpers.typing import ConfigType
 from .const import (
     ATTR_DRY_RUN,
     CONF_AUTO_SYNC,
+    CONF_PREFIX,
     CONF_SYNC_ENTRY_TITLE,
     DEFAULT_AUTO_SYNC,
+    DEFAULT_PREFIX,
     DEFAULT_SYNC_ENTRY_TITLE,
     DOMAIN,
     SERVICE_SYNC,
@@ -84,11 +87,22 @@ def _tuya_id(device: dr.DeviceEntry, domain: str) -> str | None:
     return None
 
 
+def _local_name(cloud_name: str, prefix: str) -> str:
+    # Don't double up when the cloud name already carries the prefix.
+    if not prefix or cloud_name.startswith(prefix):
+        return cloud_name
+    return f"{prefix}{cloud_name}"
+
+
 @callback
 def async_sync_names(
-    hass: HomeAssistant, *, sync_entry_title: bool, dry_run: bool = False
+    hass: HomeAssistant,
+    *,
+    prefix: str,
+    sync_entry_title: bool,
+    dry_run: bool = False,
 ) -> list[Change]:
-    """Copy cloud Tuya names onto matching Tuya Local devices."""
+    """Copy cloud Tuya names, with prefix, onto matching Tuya Local devices."""
     registry = dr.async_get(hass)
     devices = _all_devices(registry)
 
@@ -97,7 +111,7 @@ def async_sync_names(
         if (tuya_id := _tuya_id(device, SOURCE_DOMAIN)) is None:
             continue
         if name := device.name_by_user or device.name:
-            cloud_names[tuya_id] = name
+            cloud_names[tuya_id] = _local_name(name, prefix)
 
     changes: list[Change] = []
 
@@ -132,11 +146,24 @@ def async_sync_names(
     return changes
 
 
-def _options(entry: ConfigEntry) -> tuple[bool, bool]:
-    return (
-        entry.options.get(CONF_AUTO_SYNC, DEFAULT_AUTO_SYNC),
-        entry.options.get(CONF_SYNC_ENTRY_TITLE, DEFAULT_SYNC_ENTRY_TITLE),
-    )
+@dataclass
+class Settings:
+    """Options of the config entry, with defaults filled in."""
+
+    auto_sync: bool = DEFAULT_AUTO_SYNC
+    sync_entry_title: bool = DEFAULT_SYNC_ENTRY_TITLE
+    prefix: str = DEFAULT_PREFIX
+
+    @classmethod
+    def from_entry(cls, entry: ConfigEntry) -> Settings:
+        # A prefix saved as "" means "no prefix"; only a missing key gets the default.
+        return cls(
+            auto_sync=entry.options.get(CONF_AUTO_SYNC, DEFAULT_AUTO_SYNC),
+            sync_entry_title=entry.options.get(
+                CONF_SYNC_ENTRY_TITLE, DEFAULT_SYNC_ENTRY_TITLE
+            ),
+            prefix=entry.options.get(CONF_PREFIX, DEFAULT_PREFIX),
+        )
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
@@ -144,12 +171,11 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
     async def handle_sync(call: ServiceCall) -> ServiceResponse:
         entries = hass.config_entries.async_loaded_entries(DOMAIN)
-        sync_entry_title = (
-            _options(entries[0])[1] if entries else DEFAULT_SYNC_ENTRY_TITLE
-        )
+        settings = Settings.from_entry(entries[0]) if entries else Settings()
         changes = async_sync_names(
             hass,
-            sync_entry_title=sync_entry_title,
+            prefix=settings.prefix,
+            sync_entry_title=settings.sync_entry_title,
             dry_run=call.data[ATTR_DRY_RUN],
         )
         return {"changes": [change.as_dict() for change in changes]}
@@ -166,11 +192,15 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up automatic syncing."""
-    auto_sync, sync_entry_title = _options(entry)
+    settings = Settings.from_entry(entry)
 
     @callback
     def run_sync() -> None:
-        async_sync_names(hass, sync_entry_title=sync_entry_title)
+        async_sync_names(
+            hass,
+            prefix=settings.prefix,
+            sync_entry_title=settings.sync_entry_title,
+        )
 
     # Sync once Home Assistant (and with it Tuya / Tuya Local) has started.
     # Must be a @callback so it runs on the event loop, not in an executor.
@@ -180,7 +210,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     entry.async_on_unload(async_at_started(hass, on_started))
 
-    if auto_sync:
+    if settings.auto_sync:
         debouncer = Debouncer(
             hass, _LOGGER, cooldown=2, immediate=False, function=run_sync
         )

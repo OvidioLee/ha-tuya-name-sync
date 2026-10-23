@@ -3,7 +3,13 @@
     "step": {
       "user": {
         "title": "Tuya 名称同步",
-        "description": "把 Tuya（联网版）集成里的设备名称同步到对应的 Tuya Local 设备，按 Tuya 设备 ID 匹配。"
+        "description": "把 Tuya（联网版）集成里的设备名称同步到对应的 Tuya Local 设备，按 Tuya 设备 ID 匹配。",
+        "data": {
+          "prefix": "Tuya Local 名称前缀"
+        },
+        "data_description": {
+          "prefix": "加在联网版名称前面，例如 \"TL_\" 会把「台灯」改成「TL_台灯」。留空则和联网版名称完全一样。"
+        }
       }
     },
     "abort": {
@@ -16,8 +22,12 @@
       "init": {
         "title": "Tuya 名称同步选项",
         "data": {
+          "prefix": "Tuya Local 名称前缀",
           "auto_sync": "Tuya 设备改名时自动同步",
           "sync_entry_title": "同时修改 Tuya Local 集成条目的名称"
+        },
+        "data_description": {
+          "prefix": "加在联网版名称前面，例如 \"TL_\" 会把「台灯」改成「TL_台灯」。留空则和联网版名称完全一样。"
         }
       }
     }

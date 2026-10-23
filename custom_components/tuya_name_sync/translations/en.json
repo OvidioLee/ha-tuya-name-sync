@@ -3,7 +3,13 @@
     "step": {
       "user": {
         "title": "Tuya Name Sync",
-        "description": "Copy device names from the Tuya (cloud) integration to matching Tuya Local devices. Devices are matched by Tuya device ID."
+        "description": "Copy device names from the Tuya (cloud) integration to matching Tuya Local devices. Devices are matched by Tuya device ID.",
+        "data": {
+          "prefix": "Name prefix for Tuya Local"
+        },
+        "data_description": {
+          "prefix": "Added in front of the cloud name, e.g. \"TL_\" turns \"Desk lamp\" into \"TL_Desk lamp\". Leave empty to use the cloud name unchanged."
+        }
       }
     },
     "abort": {
@@ -16,8 +22,12 @@
       "init": {
         "title": "Tuya Name Sync options",
         "data": {
+          "prefix": "Name prefix for Tuya Local",
           "auto_sync": "Sync automatically when a Tuya device is renamed",
           "sync_entry_title": "Also rename the Tuya Local integration entries"
+        },
+        "data_description": {
+          "prefix": "Added in front of the cloud name, e.g. \"TL_\" turns \"Desk lamp\" into \"TL_Desk lamp\". Leave empty to use the cloud name unchanged."
         }
       }
     }
