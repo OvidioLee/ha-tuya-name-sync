@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Prefixo de nome para Tuya Local",
           "auto_sync": "Sincronizar automaticamente quando um dispositivo Tuya for renomeado",
-          "sync_entry_title": "Renomear também as entradas da integração Tuya Local"
+          "sync_entry_title": "Renomear também as entradas da integração Tuya Local",
+          "sync_entity_names": "Sincronizar também os nomes das tomadas do dispositivo na nuvem"
         },
         "data_description": {
           "prefix": "Adicionado antes do nome da nuvem, por ex. \"TL_\" transforma \"Luminária de mesa\" em \"TL_Luminária de mesa\". Deixe vazio para usar o nome da nuvem sem alterações."

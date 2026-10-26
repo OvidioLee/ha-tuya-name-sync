@@ -22,6 +22,12 @@ integration keeps them in step.
   is not prefixed twice.
 - Sets it as the Tuya Local **device name** and (optionally) the Tuya Local
   **integration entry title**, which is what the Tuya Local integration page lists.
+- **Socket names** too: if you renamed a socket of a cloud power strip in Home
+  Assistant (e.g. `Socket 1` → `Fan`), the matching Tuya Local socket gets the
+  same name with the prefix (`TL_Fan`). Sockets are paired by number, USB with
+  USB; sockets you never renamed on the cloud side are left alone. Note that the
+  Tuya cloud integration does not import socket names from the Tuya app, so
+  name them on the cloud device in Home Assistant.
 - **Entity IDs are not changed**, so automations, scripts and dashboards keep working.
 - Syncs at startup and whenever a Tuya device is renamed (can be turned off).
 - One-way only: cloud → local. Renaming a Tuya Local device directly will be
@@ -63,6 +69,7 @@ data:
 | Name prefix for Tuya Local | `TL_` | Added in front of the cloud name; empty means no prefix |
 | Sync automatically | on | Re-sync whenever a Tuya or Tuya Local device changes |
 | Also rename the Tuya Local integration entries | on | Update the entry titles shown on the Tuya Local integration page |
+| Also sync socket names | on | Copy socket names you set on the cloud device's switches to the matching Tuya Local switches |
 
 ## Languages
 
@@ -87,6 +94,7 @@ The setup and options screens are translated into English, 简体中文, 繁體�
 - 以联网版设备名称为准（如果在 HA 里改过名就用 HA 里的名称）。
 - 名称前会加一个**前缀**（默认 `TL_`），方便区分本地版：「台灯」→「TL_台灯」。前缀可在集成选项里修改，留空则和联网版名称完全一样；联网版名称本身已带这个前缀时不会重复添加。
 - 同时修改 Tuya Local 的**设备名称**和**集成条目名称**（即 Tuya Local 集成页面上显示的名字，可在选项里关闭）。
+- **插孔名称**也会同步：在 HA 里给联网版插排的某个插孔改了名（如「插座 1」→「风扇」），本地版对应插孔会改成带前缀的同名（「TL_风扇」）。按插孔编号配对，USB 对 USB；联网版没改过名的插孔不动。注意：HA 的 Tuya 联网集成不会读取涂鸦 App 里的插孔名，请在 HA 里给联网版插孔命名。
 - **不改实体 ID**，自动化、脚本、仪表盘不受影响。
 - 启动时同步一次，之后联网版设备改名会自动同步。
 - 单向同步：联网版 → 本地版。

@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Namenspräfix für Tuya Local",
           "auto_sync": "Automatisch synchronisieren, wenn ein Tuya-Gerät umbenannt wird",
-          "sync_entry_title": "Auch die Einträge der Tuya-Local-Integration umbenennen"
+          "sync_entry_title": "Auch die Einträge der Tuya-Local-Integration umbenennen",
+          "sync_entity_names": "Auch die Namen der einzelnen Steckdosen des Cloud-Geräts synchronisieren"
         },
         "data_description": {
           "prefix": "Wird vor den Cloud-Namen gesetzt, z. B. macht \"TL_\" aus \"Schreibtischlampe\" \"TL_Schreibtischlampe\". Leer lassen, um den Cloud-Namen unverändert zu übernehmen."

@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Naamvoorvoegsel voor Tuya Local",
           "auto_sync": "Automatisch synchroniseren wanneer een Tuya-apparaat wordt hernoemd",
-          "sync_entry_title": "Ook de items van de Tuya Local-integratie hernoemen"
+          "sync_entry_title": "Ook de items van de Tuya Local-integratie hernoemen",
+          "sync_entity_names": "Ook de namen van de afzonderlijke stopcontacten van het cloudapparaat synchroniseren"
         },
         "data_description": {
           "prefix": "Wordt voor de cloudnaam gezet, bijv. \"TL_\" maakt van \"Bureaulamp\" \"TL_Bureaulamp\". Laat leeg om de cloudnaam ongewijzigd over te nemen."

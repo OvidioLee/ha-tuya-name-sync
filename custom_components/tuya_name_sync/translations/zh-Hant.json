@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Tuya Local 名稱前綴",
           "auto_sync": "Tuya 裝置改名時自動同步",
-          "sync_entry_title": "同時修改 Tuya Local 整合項目的名稱"
+          "sync_entry_title": "同時修改 Tuya Local 整合項目的名稱",
+          "sync_entity_names": "同時同步雲端裝置中各插孔的名稱"
         },
         "data_description": {
           "prefix": "加在雲端名稱前面，例如 \"TL_\" 會把「檯燈」改成「TL_檯燈」。留空則與雲端名稱完全相同。"

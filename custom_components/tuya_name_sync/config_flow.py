@@ -17,9 +17,11 @@ from homeassistant.core import callback
 from .const import (
     CONF_AUTO_SYNC,
     CONF_PREFIX,
+    CONF_SYNC_ENTITY_NAMES,
     CONF_SYNC_ENTRY_TITLE,
     DEFAULT_AUTO_SYNC,
     DEFAULT_PREFIX,
+    DEFAULT_SYNC_ENTITY_NAMES,
     DEFAULT_SYNC_ENTRY_TITLE,
     DOMAIN,
 )
@@ -87,6 +89,12 @@ class TuyaNameSyncOptionsFlow(OptionsFlow):
                         CONF_SYNC_ENTRY_TITLE,
                         default=options.get(
                             CONF_SYNC_ENTRY_TITLE, DEFAULT_SYNC_ENTRY_TITLE
+                        ),
+                    ): bool,
+                    vol.Required(
+                        CONF_SYNC_ENTITY_NAMES,
+                        default=options.get(
+                            CONF_SYNC_ENTITY_NAMES, DEFAULT_SYNC_ENTITY_NAMES
                         ),
                     ): bool,
                 }

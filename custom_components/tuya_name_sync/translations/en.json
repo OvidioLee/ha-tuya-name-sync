@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Name prefix for Tuya Local",
           "auto_sync": "Sync automatically when a Tuya device is renamed",
-          "sync_entry_title": "Also rename the Tuya Local integration entries"
+          "sync_entry_title": "Also rename the Tuya Local integration entries",
+          "sync_entity_names": "Also sync socket names you set on the cloud device's switches"
         },
         "data_description": {
           "prefix": "Added in front of the cloud name, e.g. \"TL_\" turns \"Desk lamp\" into \"TL_Desk lamp\". Leave empty to use the cloud name unchanged."

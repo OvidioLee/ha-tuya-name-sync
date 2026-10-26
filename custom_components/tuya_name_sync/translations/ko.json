@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Tuya Local 이름 접두사",
           "auto_sync": "Tuya 기기 이름이 바뀌면 자동으로 동기화",
-          "sync_entry_title": "Tuya Local 통합 항목 이름도 변경"
+          "sync_entry_title": "Tuya Local 통합 항목 이름도 변경",
+          "sync_entity_names": "클라우드 기기의 각 콘센트 이름도 동기화"
         },
         "data_description": {
           "prefix": "클라우드 이름 앞에 붙습니다. 예: \"TL_\"이면 \"책상 조명\"이 \"TL_책상 조명\"이 됩니다. 비워 두면 클라우드 이름을 그대로 사용합니다."

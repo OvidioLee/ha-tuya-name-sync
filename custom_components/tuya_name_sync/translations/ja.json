@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Tuya Local の名前の接頭辞",
           "auto_sync": "Tuya デバイスの名前が変更されたら自動で同期する",
-          "sync_entry_title": "Tuya Local の統合エントリ名も変更する"
+          "sync_entry_title": "Tuya Local の統合エントリ名も変更する",
+          "sync_entity_names": "クラウド側デバイスの各コンセントの名前も同期する"
         },
         "data_description": {
           "prefix": "クラウド名の前に付けます。例: \"TL_\" なら「デスクライト」が「TL_デスクライト」になります。空欄にするとクラウド名をそのまま使います。"

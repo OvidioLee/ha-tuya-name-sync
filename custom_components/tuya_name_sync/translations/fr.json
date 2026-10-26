@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Préfixe de nom pour Tuya Local",
           "auto_sync": "Synchroniser automatiquement quand un appareil Tuya est renommé",
-          "sync_entry_title": "Renommer aussi les entrées de l'intégration Tuya Local"
+          "sync_entry_title": "Renommer aussi les entrées de l'intégration Tuya Local",
+          "sync_entity_names": "Synchroniser aussi les noms des prises de l'appareil cloud"
         },
         "data_description": {
           "prefix": "Ajouté devant le nom cloud, par ex. \"TL_\" transforme « Lampe de bureau » en « TL_Lampe de bureau ». Laissez vide pour reprendre le nom cloud tel quel."

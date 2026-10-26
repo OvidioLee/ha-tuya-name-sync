@@ -24,7 +24,8 @@
         "data": {
           "prefix": "Tuya Local 名称前缀",
           "auto_sync": "Tuya 设备改名时自动同步",
-          "sync_entry_title": "同时修改 Tuya Local 集成条目的名称"
+          "sync_entry_title": "同时修改 Tuya Local 集成条目的名称",
+          "sync_entity_names": "同时同步联网版设备里各插孔的名称"
         },
         "data_description": {
           "prefix": "加在联网版名称前面，例如 \"TL_\" 会把「台灯」改成「TL_台灯」。留空则和联网版名称完全一样。"
